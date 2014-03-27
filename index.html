@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+  <title>Buggy</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="css/bootstrap-theme.min.css"> -->
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <ul class="nav nav-pills pull-right">
+      <li class="home"><a href="#">Bug List</a></li>
+      <li class="about"><a href="#about">About</a></li>
+    </ul>
+    <h3 class="text-muted"><a href="#">Buggy</a></h3>
+  </div>
+
+  <div id="app"></div>
+
+  <div class="footer">
+    <p>&copy; Chris Hanson 2014</p>
+  </div>
+
+</div>
+
+<!-- TODO: Extract templates from here -->
+
+<!-- Templates -->
+<script id="bug-list-template" type="text/template">
+  <td><%= id %></td>
+  <td><a href="#bugs/<%= id %>"><%= title %></td>
+  <td align='right'>
+    <% if (!resolved) { %>
+    <button title="resolve"class='resolve-bug'>&#10003;</button> |
+    <% } %>
+    <button title="delete"class='delete-bug'>x</button> 
+  </td>
+</script>
+
+<script id="bugs-template" type="text/template">
+  <thead>
+    <tr>
+      <td>#</td>
+      <td>Title</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</script>
+
+<script id="new-bug-template" type="text/template">
+  <form action="#">
+    <input type="text" class='title' placeholder="New Bug Title">
+    <input type="submit" value="Create Bug">
+  </form>
+</script>
+
+<script id="bug-detail-template" type="text/template">
+  <fieldset>
+    <legend>Bug Details</legend>
+
+    <div class="field">
+      <label for="edit-bug-title">Title:</label>
+      <input type="text" id="edit-bug-title" value="<%= title %>">
+    </div>
+
+    <div class="field">
+      <label for="edit-bug-details">Details:</label>
+      <textarea id="edit-bug-details" rows="10"><%= details %></textarea>
+    </div>
+
+    <div class="field">
+      <label for="edit-bug-resolved">Resolved:</label>
+      <input type="checkbox" <% if (resolved) print('checked') %> id="edit-bug-resolved" value="<%= title %>">
+    </div>
+
+    <% if (resolved) { %>
+    <div class="field">
+      <label for="edit-bug-cause">Cause:</label>
+      <textarea id="edit-bug-cause" rows="10"><%= cause %></textarea>
+    </div>
+    <% } %>
+  </fieldset>
+</script>
+
+<script id="about-template" type="text/template">
+  <h1>About Buggy</h1>
+  <p class="lead">The #1 issue tracker</p>
+  <p>Backbone app, created to demonstrate CRUD actions and how Backbone interacts with an API end point.</p>
+
+  <h2>Usage</h2>
+  <p>There is no real backend, you need to mock it using someting like <a href="https://github.com/typicode/json-server" target="_blank">json-server</a>. To install json-server you must have <a href="http://nodejs.org/" target="_blank">node.js</a> installed.</p>
+
+  <p>After node is installed, install json-server from the command line with: <pre>npm install -g json-server</pre></p>
+
+  <p>cd into the buggy/ directory and start the json server with: <pre>json-server --file db.json</pre></p>
+
+  <p>A server will start at http://localhost:3000 - this app can then use the endpoint http://localhost:3000/bugs</p>
+</script>
+
+<!-- TODO: Concat/ minify -->
+
+<!-- Vendor -->
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/underscore.js"></script>
+<script src="js/vendor/backbone.js"></script>
+
+<!-- App -->
+<script src="js/buggy.js"></script>
+<script src="js/routers/application.js"></script>
+
+<!-- Models -->
+<script src="js/models/bug.js"></script>
+
+<!-- Views -->
+<script src="js/views/application.js"></script>
+<script src="js/views/about.js"></script>
+<script src="js/views/bug-list.js"></script>
+<script src="js/views/bug-new.js"></script>
+<script src="js/views/bug-detail.js"></script>
+<script src="js/views/bugs.js"></script>
+
+<!-- Collections -->
+<script src="js/collections/bugs.js"></script>
+
+</body>
+</html>

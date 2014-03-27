@@ -1,0 +1,43 @@
+{
+  "bugs": [
+    {
+      "id": 1,
+      "title": "User can't see course",
+      "details": "User sees black screen when they try to use their computer",
+      "resolved": true,
+      "cause": "Their computer wasn't on"
+    },
+    {
+      "id": 3,
+      "title": "New feature doesn't work",
+      "details": "Client said new feature is broken",
+      "resolved": false
+    },
+    {
+      "id": 32,
+      "title": "Doesnt work on IE5",
+      "details": "LMS doesn't work correctly on ie5",
+      "resolved": true,
+      "cause": "Good, it's not suppose too"
+    },
+    {
+      "id": 2,
+      "title": "Creating a new user creates two records in the database",
+      "details": "When an admin creates a user occasionaly it creates two",
+      "resolved": true,
+      "cause": "Race condition"
+    },
+    {
+      "id": 36,
+      "title": "Logo is not loading",
+      "details": "images/logo.png is returning a 404",
+      "resolved": false
+    },
+    {
+      "id": 21,
+      "title": "No certificate awarded",
+      "details": "When a student completes a course, the view certificate is not being displayed",
+      "resolved": false
+    }
+  ]
+}
